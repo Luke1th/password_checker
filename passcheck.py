@@ -6,12 +6,6 @@ import time  # Added for delay
 # Define delay constant (in seconds)
 API_REQUEST_DELAY = 1.5   #HIBP recommends at least 1500ms between requests to avoid rate limiting
 
-"""Add a delay between API calls in the pwned_api_check function, 
-which is called for each password in the main function. 
-The HIBP API recommends a minimum delay of 1500ms (1.5 seconds) 
-between requests to stay within their rate limits for polite usage. 
-The time.sleep to implement this delay."""
-
 def request_api_data(query_char):
     url = 'https://api.pwnedpasswords.com/range/' + query_char
     res = requests.get(url)
