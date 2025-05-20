@@ -185,7 +185,7 @@ mysecurepassword     | Secure password | Not found in breach or common_passwords
 3. **User-friendly output**: Displays results in a structured table format.
 
 ### **Conclusion:**
-This Python script is designed to evaluate the security of passwords by checking against two sources: 
+The script is designed to evaluate the security of passwords by checking against two sources: 
 a local list of 1000 common passwords, AI-generated, and an external API, HIBP (Have I Been Pwned). 
 The script is a useful tool for quickly assessing the security of passwords by combining checks against common passwords and known breach data. 
 It's helpful for users who want to ensure their credentials are strong and have not been involved in past breaches.
