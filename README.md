@@ -90,6 +90,94 @@ Example usage:
 python pwned_passwords.py password123 commonpass
 ```
 This would check if `password123` and `commonpass` have been compromised in any data breaches or are in the local common password list.
+----------------------------------------------------------------------------------------------------------------------
+
+# Detailed Code Explanation
+The code is a **password security checker** that evaluates the security of passwords provided as command-line arguments, and uses k-anonymity for protecting privacy. It performs two main checks: 
+
+1. **Local common password check**: Verifies if the password exists in a local file (`common_passwords.txt`) containing a list of commonly used passwords.
+2. **HIBP API check**: Uses the "Have I Been Pwned" (HIBP) API to check if the password has been exposed in known data breaches.
+
+Here’s a breakdown of how your code works:
+
+
+### **1. Importing Required Modules**
+```python
+import requests      
+import hashlib        
+import sys
+```
+- `requests`: For making HTTP requests to the HIBP API.
+- `hashlib`: For hashing passwords using SHA-1 (required by the HIBP API).
+- `sys`: For handling command-line arguments and exiting with appropriate status codes.
+
+
+### **2. HIBP API Integration**
+#### `request_api_data(query_char)`
+- Sends a request to the HIBP API with the first 5 characters of the SHA-1 hash of the password.
+- Returns the response containing a list of hash suffixes and their breach counts.
+
+#### `get_password_leaks_count(hashes, hash_to_check)`
+- Parses the API response to find if the full hash of the password exists in the breach data.
+- Returns the number of times the password was found in breaches.
+
+#### `pwned_api_check(password)`
+- Hashes the password using SHA-1 and splits it into the first 5 characters (`first5_char`) and the rest (`tail`).
+- Sends the first 5 characters to the API and checks if the `tail` exists in the response.
+- Returns the breach count if found, or `0` if not.
+
+### **3. Local Common Password Check**
+#### `check_common_password(password)`
+- Opens the common_passwords.txt file and loads its contents into a `set` for fast lookups.
+- Checks if the password exists in the set.
+- Handles errors like missing or unreadable files gracefully by printing warnings and skipping the check.
+
+### **4. Main Function**
+#### `main(args)`
+- Accepts a list of passwords as command-line arguments.
+- Prints a structured table header for the results.
+- For each password:
+  1. **Strips whitespace** to ensure clean input.
+  2. **Checks the local common password list**:
+     - If found, marks the password as "Common password" and advises changing it.
+  3. **Checks the HIBP API**:
+     - If found in breaches, marks the password as "Data breach" and displays the breach count.
+  4. If neither check finds the password, marks it as "Secure password."
+- Prints the results in a formatted table.
+- Returns `0` for success or `1` if no passwords were provided.
+
+---
+
+### **5. Entry Point**
+```python
+if __name__ == '__main__':
+    sys.exit(main(sys.argv[1:]))
+```
+- Executes the `main` function with command-line arguments (excluding the script name).
+- Exits with the appropriate status code.
+
+### **Example Execution**
+Command:
+```bash
+python passcheck.py password123 qwerty mysecurepassword
+```
+
+Output:
+```
+Password             | Status          | Details
+------------------------------------------------------------
+password123          | Common password | Found in common_passwords list. Consider changing it!
+
+qwerty               | Common password | Found in common_passwords list. Consider changing it!
+
+mysecurepassword     | Secure password | Not found in breach or common_passwords list.
+
+```
+
+### **Key Features**
+1. **Local and API-based checks**: Combines local file checks with an online API for comprehensive password evaluation.
+2. **Error handling**: Gracefully handles missing files or API errors.
+3. **User-friendly output**: Displays results in a structured table format.
 
 
 Conclusion:
