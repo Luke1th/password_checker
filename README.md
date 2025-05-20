@@ -175,7 +175,7 @@ password123          | Common password | Found in common_passwords list. Conside
 
 qwerty               | Common password | Found in common_passwords list. Consider changing it!
 
-mysecurepassword     | Secure password | Not found in breach or common_passwords list.
+mysecurepassword     | Non-breached password | Not found in breach or common_passwords list.
 
 ```
 
