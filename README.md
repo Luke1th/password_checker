@@ -45,7 +45,7 @@ The script starts by importing four libraries:
 * `sys`: for accessing command-line arguments
 * `import time`: for delay between requests, 1.5 seconds
 
-**Functions**
+# Functions
 The script defines four functions:
 
 ### 1. `request_api_data(query_char)`
