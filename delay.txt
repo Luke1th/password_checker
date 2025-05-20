@@ -2,29 +2,25 @@
 To avoid being blocked by the API due to rate limiting, 
 add a delay between API calls in the pwned_api_check function, which is called for each password in the main function.
 The Have I Been Pwned (HIBP) API recommends a minimum delay of 1500ms (1.5 seconds) 
-between requests to stay within their rate limits for polite usage. 
+between requests to stay within their rate limits for "polite usage". 
 Python's time.sleep can be used to implement this delay.
 
 
 
-1. Add time Import:
-- Added import time at the top of the script to use the time.sleep function for introducing delays.
+1. Add a time import at the top of the script to use the time.sleep function for introducing delays.
 
 2. Defined Delay Constant:
 - Add API_REQUEST_DELAY = 1.5 as a constant to specify the delay duration in seconds. 
-  This makes it easy to adjust the delay if needed (e.g., if the API's rate limit changes). 
+  This makes adjusting the delay if needed (e.g., if the API's rate limit changes) is easy. 
   The 1.5-second delay aligns with HIBP's recommendation of at least 1500ms between requests.
 
 3. Add Delay in pwned_api_check:
-
 - Inserted time.sleep(API_REQUEST_DELAY) before the API call in the pwned_api_check function. 
-  This ensures that each API request is delayed by 1.5 seconds, reducing the risk of being rate-limited 
-  or blocked by the HIBP API.
+  This ensures that each API request is delayed by 1.5 seconds, reducing the risk of being blocked by the HIBP API.
 - The delay is placed before the request_api_data(first5_char) call to ensure it applies to every API request, 
   as pwned_api_check is called for each password in the main function's loop.
 
 4. Why Here?:
-
 - The pwned_api_check function is the entry point for each API call, 
   and the main function loops over multiple passwords, calling pwned_api_check for each. 
   Adding the delay here ensures that consecutive API calls (for multiple passwords) are spaced out appropriately.
@@ -45,8 +41,6 @@ Python's time.sleep can be used to implement this delay.
 
 
 #Notes
-HIBP Rate Limits: The HIBP API doesn’t publicly specify an exact rate limit for the password range API, 
-but Troy Hunt (the creator) has suggested a delay of around 1500ms between requests to be courteous. 
 The 1.5-second delay should be sufficient, but you can increase API_REQUEST_DELAY (e.g., to 2.0) if you encounter issues.
 Error Handling: The delay doesn’t affect the existing error handling (e.g., checking for non-200 status codes). 
 If the API blocks you due to rate limiting, you’ll likely get a 429 status code, 
