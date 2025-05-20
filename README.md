@@ -32,18 +32,18 @@ This is how it works:
 
 -------------------------------------------------------------------------------------------------
 # Sources
-1. Have I Been Pwned (HIBP) API: This API provides a list of breached passwords, which are hashed using SHA-1 and stored in a database.
-2. A local common password list (`common_passwords.txt`): This file contains a list of common passwords that should be avoided.
+1. Have I Been Pwned (HIBP) API: This API provides a list of millions of breached passwords, which are hashed using SHA-1 and stored in a database.
+2. A local common password list (`common_passwords.txt`): This file contains a list of common passwords AI-generated that should be avoided.
 
 Here's a breakdown of the code:
 
 **Importing libraries**
 
 The script starts by importing three libraries:
-* `requests`: for making HTTP requests to HIBP API
+* `requests`: for making HTTP requests to the HIBP API
 * `hashlib`: for hashing passwords using SHA-1
 * `sys`: for accessing command-line arguments
-* `import time`: for delay between requests 1.5 seconds
+* `import time`: for delay between requests, 1.5 seconds
 
 **Functions**
 The script defines four functions:
