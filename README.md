@@ -113,6 +113,8 @@ import time
 - `sys`: For handling command-line arguments and exiting with appropriate status codes.
 - `import time`: for delay between requests, 1.5 seconds
 
+### API_REQUEST_DELAY = 1.5 as a constant to specify the delay duration in seconds. 
+
 ### **2. HIBP API Integration**
 #### `request_api_data(query_char)`
 - Sends a request to the HIBP API with the first 5 characters of the SHA-1 hash of the password.
