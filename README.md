@@ -90,7 +90,7 @@ Example usage:
 python pwned_passwords.py password123 commonpass
 ```
 This would check if `password123` and `commonpass` have been compromised in any data breaches or are in the local common password list.
-----------------------------------------------------------------------------------------------------------------------
+#######################################################################################################################################
 
 # Detailed Code Explanation
 The code is a **password security checker** that evaluates the security of passwords provided as command-line arguments, and uses k-anonymity for protecting privacy. It performs two main checks: 
