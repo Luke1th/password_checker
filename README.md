@@ -111,7 +111,7 @@ import time
 - `requests`: For making HTTP requests to the HIBP API.
 - `hashlib`: For hashing passwords using SHA-1 (required by the HIBP API).
 - `sys`: For handling command-line arguments and exiting with appropriate status codes.
-
+- `import time`: for delay between requests, 1.5 seconds
 
 ### **2. HIBP API Integration**
 #### `request_api_data(query_char)`
