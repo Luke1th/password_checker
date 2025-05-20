@@ -6,7 +6,6 @@ between requests to stay within their rate limits for "polite usage".
 Python's time.sleep can be used to implement this delay.
 
 
-
 1. Add a time import at the top of the script to use the time.sleep function for introducing delays.
 
 2. Defined Delay Constant:
