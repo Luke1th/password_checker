@@ -26,8 +26,8 @@ def pwned_api_check(password):
     sha1password = hashlib.sha1(password.encode('utf-8')).hexdigest().upper()
     first5_char, tail = sha1password[:5], sha1password[5:]
     
-    # Add a delay before making the API request to avoid rate limiting
-    time.sleep(API_REQUEST_DELAY)  # Delay to respect HIBP rate limits
+    # Delay before making the API request to avoid rate limiting, respect HIBP rate limits
+    time.sleep(API_REQUEST_DELAY)  
     response = request_api_data(first5_char)
     #print(first5_char, tail, response)
     return get_password_leaks_count(response, tail)
