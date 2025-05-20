@@ -4,7 +4,8 @@ import sys
 import time  # Added for delay
 
 # Define delay constant (in seconds)
-API_REQUEST_DELAY = 1.5   #HIBP recommends at least 1500ms between requests to avoid rate limiting
+# HIBP recommends at least 1500ms between requests to avoid rate limiting
+API_REQUEST_DELAY = 1.5   
 
 def request_api_data(query_char):
     url = 'https://api.pwnedpasswords.com/range/' + query_char
@@ -21,11 +22,11 @@ def get_password_leaks_count(hashes, hash_to_check):
     return 0
 
 def pwned_api_check(password):
-    #check password if it exists in API response
+    # Check if the password exists in the API response
     sha1password = hashlib.sha1(password.encode('utf-8')).hexdigest().upper()
     first5_char, tail = sha1password[:5], sha1password[5:]
     
-    # Add delay before making the API request to avoid rate limiting
+    # Add a delay before making the API request to avoid rate limiting
     time.sleep(API_REQUEST_DELAY)  # Delay to respect HIBP rate limits
     response = request_api_data(first5_char)
     #print(first5_char, tail, response)
