@@ -106,6 +106,7 @@ Here’s a breakdown of how your code works:
 import requests      
 import hashlib        
 import sys
+import time
 ```
 - `requests`: For making HTTP requests to the HIBP API.
 - `hashlib`: For hashing passwords using SHA-1 (required by the HIBP API).
