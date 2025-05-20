@@ -39,7 +39,7 @@ Here's a breakdown of the code:
 
 **Importing libraries**
 
-The script starts by importing three libraries:
+The script starts by importing four libraries:
 * `requests`: for making HTTP requests to the HIBP API
 * `hashlib`: for hashing passwords using SHA-1
 * `sys`: for accessing command-line arguments
