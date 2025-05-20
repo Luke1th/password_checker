@@ -31,6 +31,7 @@ This is how it works:
    providing informative messages to the user.
 
 -------------------------------------------------------------------------------------------------
+# Sources
 1. Have I Been Pwned (HIBP) API: This API provides a list of breached passwords, which are hashed using SHA-1 and stored in a database.
 2. A local common password list (`common_passwords.txt`): This file contains a list of common passwords that should be avoided.
 
