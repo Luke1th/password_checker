@@ -127,6 +127,7 @@ import time
 
 #### `pwned_api_check(password)`
 - Hashes the password using SHA-1 and splits it into the first 5 characters (`first5_char`) and the rest (`tail`).
+- `time.sleep(API_REQUEST_DELAY)`, a delay is added before making the API request to avoid rate limiting.
 - Sends the first 5 characters to the API and checks if the `tail` exists in the response.
 - Returns the breach count if found, or `0` if not.
 
