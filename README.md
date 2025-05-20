@@ -93,7 +93,7 @@ This would check if `password123` and `commonpass` have been compromised in any 
 ############################################################################################################
 
 # Detailed Code Explanation
-The code is a **password security checker** that evaluates the security of passwords provided as command-line arguments, and uses k-anonymity for protecting privacy. It performs two main checks: 
+It performs two main checks: 
 
 1. **Local common password check**: Verifies if the password exists in a local file (`common_passwords.txt`) containing a list of commonly used passwords.
 2. **HIBP API check**: Uses the "Have I Been Pwned" (HIBP) API to check if the password has been exposed in known data breaches.
